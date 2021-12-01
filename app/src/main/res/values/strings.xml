@@ -1,3 +1,4 @@
 <resources>
-    <string name="app_name">DesafioTokenLab</string>
+    <string name="app_name">Desafio TokenLab</string>
+    <string name="filmes">Filmes</string>
 </resources>
