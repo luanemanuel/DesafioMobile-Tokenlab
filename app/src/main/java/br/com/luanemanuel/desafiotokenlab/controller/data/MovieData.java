@@ -2,7 +2,7 @@ package br.com.luanemanuel.desafiotokenlab.controller.data;
 
 import java.util.List;
 
-import br.com.luanemanuel.desafiotokenlab.controller.db.MovieDataAccess;
+import br.com.luanemanuel.desafiotokenlab.model.db.MovieDataAccess;
 import br.com.luanemanuel.desafiotokenlab.model.Movie;
 
 public class MovieData {

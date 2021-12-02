@@ -1,4 +1,4 @@
-package br.com.luanemanuel.desafiotokenlab.controller.db;
+package br.com.luanemanuel.desafiotokenlab.model.db;
 
 import android.content.ContentValues;
 import android.content.Context;

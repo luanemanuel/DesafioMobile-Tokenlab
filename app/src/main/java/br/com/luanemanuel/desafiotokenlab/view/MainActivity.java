@@ -13,7 +13,7 @@ import br.com.luanemanuel.desafiotokenlab.R;
 import br.com.luanemanuel.desafiotokenlab.controller.MainController;
 import br.com.luanemanuel.desafiotokenlab.controller.data.MovieData;
 import br.com.luanemanuel.desafiotokenlab.controller.adapter.MovieAdapter;
-import br.com.luanemanuel.desafiotokenlab.controller.db.MovieDataAccess;
+import br.com.luanemanuel.desafiotokenlab.model.db.MovieDataAccess;
 import br.com.luanemanuel.desafiotokenlab.model.Movie;
 
 public class MainActivity extends AppCompatActivity {
