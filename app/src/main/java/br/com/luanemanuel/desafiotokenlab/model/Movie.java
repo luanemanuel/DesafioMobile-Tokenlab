@@ -1,11 +1,5 @@
 package br.com.luanemanuel.desafiotokenlab.model;
 
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
-
 public class Movie {
 
     private int id;
@@ -13,7 +7,6 @@ public class Movie {
     private String posterURL;
     private String overview;
     private String votes;
-    private final List<String> genres = new ArrayList<>();
     private boolean adult;
     private String releaseDate;
 
@@ -57,10 +50,6 @@ public class Movie {
         this.votes = votes;
     }
 
-    public List<String> getGenres() {
-        return genres;
-    }
-
     public boolean isAdult() {
         return adult;
     }
@@ -75,17 +64,5 @@ public class Movie {
 
     public void setReleaseDate(String releaseDate) {
         this.releaseDate = releaseDate;
-    }
-
-    public void addGenres(String genre){
-        this.genres.add(genre);
-    }
-
-    public void removeGenres(String genre){
-        for(String actualGenre : genres){
-            if(actualGenre.equals(genre)){
-                genres.remove(actualGenre);
-            }
-        }
     }
 }

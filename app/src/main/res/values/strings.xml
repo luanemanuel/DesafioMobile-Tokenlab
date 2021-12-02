@@ -1,4 +1,10 @@
 <resources>
     <string name="app_name">Desafio TokenLab</string>
     <string name="filmes">Filmes</string>
+    <string name="nota">Nota: %1$s / 10</string>>
+    <string name="adulto">Adulto: %1$s</string>>
+    <string name="sim">Sim</string>>
+    <string name="nao">Não</string>>
+    <string name="data">Data de Lançamento: %1$s</string>>
+    <string name="semconexao">Não consegui acessar meus dados!\n Você está conectado a internet?</string>>
 </resources>
