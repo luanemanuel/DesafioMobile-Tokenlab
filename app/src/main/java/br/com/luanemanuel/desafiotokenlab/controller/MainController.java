@@ -19,6 +19,7 @@ public class MainController {
     private static final String TAG = "MainActivity";
     public MovieDataAccess movieDataAccess;
 
+    //Realiza o download do JSON contido na API e o converte no objeto Movie que será salvo na lista e no banco
     public void getMovies(MainActivity activity){
         String movieAPIURL = "https://desafio-mobile.nyc3.digitaloceanspaces.com/movies";
         movieDataAccess = new MovieDataAccess(activity);
@@ -28,6 +29,7 @@ public class MainController {
             try{
                 activity.setProgressBarDisabled(true);
                 if(response.length() > 0){
+                    MovieData.getMovieList().clear();
                     for(int i = 0; i < response.length(); i++){
                         Movie movie = jsonToMovie(response.getJSONObject(i));
                         movieDataAccess.insertMovieToDatabase(movie);
@@ -52,13 +54,14 @@ public class MainController {
         queue.add(request);
     }
 
+    //Realiza a atualização da pagina de filmes
     public void refreshMovies(MainActivity activity){
         activity.setProgressBarDisabled(false);
         movieDataAccess.clearMovieDatabase();
-        MovieData.getMovieList().clear();
         getMovies(activity);
     }
 
+    //Conversor JSON para objeto Movie
     private Movie jsonToMovie(JSONObject obj) throws JSONException {
         Movie movie = new Movie();
         movie.setId(obj.getInt("id"));

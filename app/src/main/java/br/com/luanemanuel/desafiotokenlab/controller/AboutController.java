@@ -18,6 +18,7 @@ public class AboutController {
     private static final String TAG = "AboutActivity";
     private Movie selectedMovie;
 
+    //Realiza o download do JSON contido na API e o converte no objeto Movie que será salvo na lista e no banco
     public void getMovieAbout(int id, AboutActivity activity){
         String movieAPIURL = "https://desafio-mobile.nyc3.digitaloceanspaces.com/movies/" + id;
 

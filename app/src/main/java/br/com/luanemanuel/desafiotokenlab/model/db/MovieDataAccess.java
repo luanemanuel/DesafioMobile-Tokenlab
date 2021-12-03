@@ -3,6 +3,8 @@ package br.com.luanemanuel.desafiotokenlab.model.db;
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
+import android.database.SQLException;
+import android.database.sqlite.SQLiteConstraintException;
 import android.database.sqlite.SQLiteDatabase;
 
 import java.util.ArrayList;
@@ -12,8 +14,8 @@ import br.com.luanemanuel.desafiotokenlab.model.Movie;
 
 public class MovieDataAccess {
 
-    private DatabaseConnection connection;
-    private SQLiteDatabase database;
+    private final DatabaseConnection connection;
+    private final SQLiteDatabase database;
 
     public MovieDataAccess(Context context) {
         connection = new DatabaseConnection(context);
@@ -29,7 +31,12 @@ public class MovieDataAccess {
         values.put("votes", movie.getVotes());
         values.put("release_date", movie.getReleaseDate());
 
-        database.insert("movie", null, values);
+        Cursor cursor = database.rawQuery("SELECT id FROM movie WHERE id = '" + movie.getId()+ "'", null);
+
+        if(cursor.getCount() <= 0){
+            database.insert("movie", null, values);
+        }
+        cursor.close();
     }
 
     public void updateMovieOnDatabase(Movie movie){
@@ -59,6 +66,7 @@ public class MovieDataAccess {
             movies.add(movie);
         }
 
+        cursor.close();
         return movies;
     }
 

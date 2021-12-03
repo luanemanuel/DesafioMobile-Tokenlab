@@ -61,6 +61,7 @@ public class AboutActivity extends AppCompatActivity {
         });
     }
 
+    // Atualiza os dados na tela
     public void updateScreen(Movie movie){
         movieTitle.setText(movie.getTitle());
         movieVotes.setText(getString(R.string.nota, movie.getVotes()));
@@ -84,6 +85,7 @@ public class AboutActivity extends AppCompatActivity {
         refreshAbout.setRefreshing(false);
     }
 
+    // Desativa ou ativa certos componentes durante o carregamento
     public void setProgressBarDisabled(boolean disabled){
         aboutProgressBar.setVisibility(disabled ? ProgressBar.GONE : ProgressBar.VISIBLE);
         movieImage.setVisibility(disabled ? ImageView.VISIBLE : ImageView.GONE);
@@ -96,6 +98,7 @@ public class AboutActivity extends AppCompatActivity {
         refreshAbout.setRefreshing(false);
     }
 
+    // Torna visivel a mensagem de erro de conexão
     public void setNoConnection(boolean withoutConnection){
         setProgressBarDisabled(!withoutConnection);
         aboutProgressBar.setVisibility(withoutConnection ? ProgressBar.GONE : ProgressBar.VISIBLE);

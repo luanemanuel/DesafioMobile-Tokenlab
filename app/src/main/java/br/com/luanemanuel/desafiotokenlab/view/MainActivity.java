@@ -55,6 +55,7 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
+    // Desativa ou ativa certos componentes durante o carregamento
     public void setProgressBarDisabled(boolean disabled){
         progressBar.setVisibility(disabled ? ProgressBar.GONE : ProgressBar.VISIBLE);
         movieList.setVisibility(disabled ? ListView.VISIBLE : ListView.GONE);
@@ -62,6 +63,7 @@ public class MainActivity extends AppCompatActivity {
         refreshMain.setRefreshing(false);
     }
 
+    // Torna visivel a mensagem de erro de conexão
     public void setNoConnection(boolean withoutConnection){
         setProgressBarDisabled(!withoutConnection);
         progressBar.setVisibility(withoutConnection ? ProgressBar.GONE : ProgressBar.VISIBLE);
@@ -69,6 +71,7 @@ public class MainActivity extends AppCompatActivity {
         refreshMain.setRefreshing(false);
     }
 
+    // Realiza a troca de janelas
     public void openAboutActivity(int id){
         Intent intent = new Intent(this, AboutActivity.class);
         intent.putExtra("MOVIE_ID", id);
