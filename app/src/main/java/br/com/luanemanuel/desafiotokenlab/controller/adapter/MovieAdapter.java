@@ -48,7 +48,17 @@ public class MovieAdapter extends ArrayAdapter<Movie> {
 
             @Override
             public void onError(Exception e) {
-                movieImage.setImageResource(R.drawable.image_notfound);
+                Picasso.get().load(R.drawable.image_notfound).into(movieImage, new Callback() {
+                    @Override
+                    public void onSuccess() {
+
+                    }
+
+                    @Override
+                    public void onError(Exception e) {
+                        movieImage.setImageResource(R.drawable.image_notfound);
+                    }
+                });
             }
         });
         movieTitle.setText(getItem(position).getTitle());

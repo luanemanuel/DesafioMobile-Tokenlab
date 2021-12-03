@@ -78,7 +78,17 @@ public class AboutActivity extends AppCompatActivity {
 
             @Override
             public void onError(Exception e) {
-                movieImage.setImageResource(R.drawable.image_notfound);
+                Picasso.get().load(R.drawable.image_notfound).into(movieImage, new Callback() {
+                    @Override
+                    public void onSuccess() {
+
+                    }
+
+                    @Override
+                    public void onError(Exception e) {
+                        movieImage.setImageResource(R.drawable.image_notfound);
+                    }
+                });
             }
         });
         setProgressBarDisabled(true);

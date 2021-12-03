@@ -23,20 +23,18 @@ public class MainController {
     public void getMovies(MainActivity activity){
         String movieAPIURL = "https://desafio-mobile.nyc3.digitaloceanspaces.com/movies";
         movieDataAccess = new MovieDataAccess(activity);
-
         RequestQueue queue = Volley.newRequestQueue(activity);
         JsonArrayRequest request = new JsonArrayRequest(Request.Method.GET, movieAPIURL, null, response -> {
             try{
-                activity.setProgressBarDisabled(true);
+                MovieData.getMovieList().clear();
                 if(response.length() > 0){
-                    MovieData.getMovieList().clear();
                     for(int i = 0; i < response.length(); i++){
                         Movie movie = jsonToMovie(response.getJSONObject(i));
                         movieDataAccess.insertMovieToDatabase(movie);
                         MovieData.getMovieList().add(movie);
                     }
                 }
-
+                activity.setProgressBarDisabled(true);
                 activity.movieAdapter.notifyDataSetChanged();
             }catch (JSONException e){
                 Log.e(TAG, "Exception on get movies >> ", e);
@@ -57,6 +55,7 @@ public class MainController {
     //Realiza a atualização da pagina de filmes
     public void refreshMovies(MainActivity activity){
         activity.setProgressBarDisabled(false);
+        MovieData.getMovieList().clear();
         movieDataAccess.clearMovieDatabase();
         getMovies(activity);
     }
